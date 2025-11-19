@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" 
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" 
+           xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" 
+           xsi:type="MailApp">
+  
+  <!-- Métadonnées de base -->
+  <Id>bc84ed87-18fc-4fa1-874a-914bc976f89b</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>RISE 4</ProviderName>
+  <DefaultLocale>fr-FR</DefaultLocale>
+  <DisplayName DefaultValue="LinkedIn Add-in"/>
+  <Description DefaultValue="IM LinkedIn si présent ; sinon recherche People (Prénom Nom)"/>
+  <IconUrl DefaultValue="https://rise-4.github.io/Rise-OutlookAddins-Linkedin/Icone-80px.png"/>
+  <HighResolutionIconUrl DefaultValue="https://rise-4.github.io/Rise-OutlookAddins-Linkedin/Icone-80px.png"/>
+  <SupportUrl DefaultValue="https://bidgrp.sharepoint.com/sites/RISE4"/>
+  
+  <!-- Hosts -->
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+  
+  <!-- Exigences -->
+  <Requirements>
+    <Sets>
+      <Set Name="Mailbox" MinVersion="1.1"/>
+    </Sets>
+  </Requirements>
+  
+  <!-- Permissions -->
+  <Permissions>ReadWriteItem</Permissions>
+  
+  <!-- SSO / Graph -->
+  <WebApplicationInfo>
+    <Id>bc84ed87-18fc-4fa1-874a-914bc976f89b</Id>
+    <Resource>api://bc84ed87-18fc-4fa1-874a-914bc976f89b</Resource>
+    <Scopes>
+      <Scope>User.Read</Scope>
+      <Scope>Contacts.Read</Scope>
+    </Scopes>
+  </WebApplicationInfo>
+  
+  <!-- Déclare les domaines autorisés -->
+  <AppDomains>
+    <AppDomain>https://rise-4.github.io</AppDomain>
+    <AppDomain>https://www.linkedin.com</AppDomain>
+    <AppDomain>https://graph.microsoft.com</AppDomain>
+  </AppDomains>
+  
+  <!-- VersionOverrides pour Mail -->
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1" xsi:type="VersionOverridesV1_1">
+    
+    <!-- Requirements pour VersionOverrides -->
+    <Requirements>
+      <bt:Sets DefaultMinVersion="1.3">
+        <bt:Set Name="Mailbox"/>
+      </bt:Sets>
+    </Requirements>
+    
+    <Hosts>
+      <Host xsi:type="MailHost">
+        
+        <!-- FunctionFile DOIT être dans VersionOverrides -->
+        <FunctionFile resid="fnFile"/>
+        
+        <!-- Commandes (boutons) -->
+        <DesktopFormFactor>
+          <FunctionFile resid="fnFile"/>
+          <ExtensionPoint xsi:type="MessageReadCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="msgReadGroup">
+                <Label resid="resLabel"/>
+                <Control xsi:type="Button" id="msgReadOpenLinkedIn">
+                  <Label resid="resLabel"/>
+                  <Supertip>
+                    <Title resid="resLabel"/>
+                    <Description resid="resDesc"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="ico16"/>
+                    <bt:Image size="32" resid="ico32"/>
+                    <bt:Image size="80" resid="ico80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>openLinkedIn</FunctionName>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+        
+      </Host>
+    </Hosts>
+    
+    <!-- Resources dans VersionOverrides -->
+    <Resources>
+      <bt:Images>
+        <bt:Image id="ico16" DefaultValue="https://rise-4.github.io/Rise-OutlookAddins-Linkedin/Icone-16px.png"/>
+        <bt:Image id="ico32" DefaultValue="https://rise-4.github.io/Rise-OutlookAddins-Linkedin/Icone-32px.png"/>
+        <bt:Image id="ico80" DefaultValue="https://rise-4.github.io/Rise-OutlookAddins-Linkedin/Icone-80px.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="fnFile" DefaultValue="https://rise-4.github.io/Rise-OutlookAddins-Linkedin/functions.html"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="resLabel" DefaultValue="Ouvrir LinkedIn"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="resDesc" DefaultValue="IM LinkedIn si présent ; sinon recherche People (Prénom Nom)"/>
+      </bt:LongStrings>
+    </Resources>
+    
+  </VersionOverrides>
+  
+</OfficeApp>
+
