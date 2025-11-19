@@ -14,7 +14,6 @@
   <Description DefaultValue="Recherche LinkedIn basée sur le nom/prénom de l'expéditeur"/>
   <IconUrl DefaultValue="https://rise-4.github.io/Rise-OutlookAddins-Linkedin/Icone-80px.png"/>
   <HighResolutionIconUrl DefaultValue="https://rise-4.github.io/Rise-OutlookAddins-Linkedin/Icone-80px.png"/>
-  <SupportUrl DefaultValue="https://rise-4.github.io/Rise-OutlookAddins-Linkedin"/>
   
   <!-- Hosts -->
   <Hosts>
