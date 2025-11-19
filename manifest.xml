@@ -11,10 +11,10 @@
   <ProviderName>RISE 4</ProviderName>
   <DefaultLocale>fr-FR</DefaultLocale>
   <DisplayName DefaultValue="LinkedIn Add-in"/>
-  <Description DefaultValue="IM LinkedIn si présent ; sinon recherche People (Prénom Nom)"/>
+  <Description DefaultValue="Recherche LinkedIn basée sur le nom/prénom de l'expéditeur"/>
   <IconUrl DefaultValue="https://rise-4.github.io/Rise-OutlookAddins-Linkedin/Icone-80px.png"/>
   <HighResolutionIconUrl DefaultValue="https://rise-4.github.io/Rise-OutlookAddins-Linkedin/Icone-80px.png"/>
-  <SupportUrl DefaultValue="https://bidgrp.sharepoint.com/sites/RISE4"/>
+  <SupportUrl DefaultValue="https://rise-4.github.io/Rise-OutlookAddins-Linkedin"/>
   
   <!-- Hosts -->
   <Hosts>
@@ -31,21 +31,10 @@
   <!-- Permissions -->
   <Permissions>ReadWriteItem</Permissions>
   
-  <!-- SSO / Graph -->
-  <WebApplicationInfo>
-    <Id>bc84ed87-18fc-4fa1-874a-914bc976f89b</Id>
-    <Resource>api://bc84ed87-18fc-4fa1-874a-914bc976f89b</Resource>
-    <Scopes>
-      <Scope>User.Read</Scope>
-      <Scope>Contacts.Read</Scope>
-    </Scopes>
-  </WebApplicationInfo>
-  
   <!-- Déclare les domaines autorisés -->
   <AppDomains>
     <AppDomain>https://rise-4.github.io</AppDomain>
     <AppDomain>https://www.linkedin.com</AppDomain>
-    <AppDomain>https://graph.microsoft.com</AppDomain>
   </AppDomains>
   
   <!-- VersionOverrides pour Mail -->
@@ -108,7 +97,7 @@
         <bt:String id="resLabel" DefaultValue="Ouvrir LinkedIn"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="resDesc" DefaultValue="IM LinkedIn si présent ; sinon recherche People (Prénom Nom)"/>
+        <bt:String id="resDesc" DefaultValue="Recherche LinkedIn basée sur le nom/prénom"/>
       </bt:LongStrings>
     </Resources>
     
