@@ -64,29 +64,69 @@ function searchLinkedIn(event) {
       const linkedInUrl = `https://www.linkedin.com/search/results/people/?keywords=${encodedName}`;
       
       // Ouvrir LinkedIn dans le navigateur par défaut
-      // Note: window.open peut ne pas fonctionner dans tous les contextes,
-      // mais c'est la méthode recommandée pour les commandes ExecuteFunction
+      // Utiliser une technique qui fonctionne dans les add-ins Outlook
       try {
-        // Utiliser Office.context.ui pour ouvrir une URL
-        Office.context.ui.displayDialogAsync(
-          linkedInUrl,
-          { height: 70, width: 50 },
-          (asyncResult) => {
-            if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-              console.error("Erreur lors de l'ouverture de la boîte de dialogue:", asyncResult.error);
-              // Fallback: essayer window.open (peut ne pas fonctionner dans tous les contextes)
-              try {
-                window.open(linkedInUrl, '_blank');
-              } catch (e) {
-                console.error("Impossible d'ouvrir LinkedIn:", e);
+        // Méthode 1: Essayer d'ouvrir directement avec un élément <a> cliqué programmatiquement
+        // Cette méthode fonctionne mieux que window.open dans les contextes d'add-ins
+        const link = document.createElement('a');
+        link.href = linkedInUrl;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.style.display = 'none';
+        document.body.appendChild(link);
+        
+        // Utiliser à la fois click() et dispatchEvent pour maximiser la compatibilité
+        if (link.click) {
+          link.click();
+        } else {
+          const clickEvent = new MouseEvent('click', {
+            view: window,
+            bubbles: true,
+            cancelable: true
+          });
+          link.dispatchEvent(clickEvent);
+        }
+        
+        // Retirer l'élément après un court délai
+        setTimeout(() => {
+          if (link.parentNode) {
+            document.body.removeChild(link);
+          }
+        }, 100);
+        
+        console.log("Tentative d'ouverture de LinkedIn:", linkedInUrl);
+      } catch (e) {
+        console.error("Erreur avec la méthode directe:", e);
+        // Fallback: Utiliser une page de redirection dans une boîte de dialogue
+        try {
+          const redirectUrl = `https://rise-4.github.io/Rise-OutlookAddins-Linkedin/redirect.html?url=${encodeURIComponent(linkedInUrl)}`;
+          
+          Office.context.ui.displayDialogAsync(
+            redirectUrl,
+            { 
+              height: 60, 
+              width: 50,
+              displayInIframe: false
+            },
+            (asyncResult) => {
+              if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+                console.error("Erreur lors de l'ouverture de la boîte de dialogue:", asyncResult.error);
                 showErrorMessage("Impossible d'ouvrir LinkedIn. Veuillez copier cette URL: " + linkedInUrl);
+              } else {
+                // Écouter les messages de la boîte de dialogue pour la fermer
+                const dialog = asyncResult.value;
+                dialog.addEventHandler(Office.EventType.DialogMessageReceived, (arg) => {
+                  if (arg.message === 'close') {
+                    dialog.close();
+                  }
+                });
               }
             }
-          }
-        );
-      } catch (e) {
-        console.error("Erreur lors de l'ouverture de LinkedIn:", e);
-        showErrorMessage("Erreur lors de l'ouverture de LinkedIn. URL: " + linkedInUrl);
+          );
+        } catch (e2) {
+          console.error("Erreur lors de l'ouverture de LinkedIn:", e2);
+          showErrorMessage("Erreur lors de l'ouverture de LinkedIn. URL: " + linkedInUrl);
+        }
       }
     } else {
       showErrorMessage("Impossible de récupérer le nom. Veuillez sélectionner un mail ou un contact avec un expéditeur/organisateur.");
