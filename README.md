@@ -86,14 +86,14 @@ npm run validate
 
 ## Déploiement sur GitHub Pages
 
-L'add-in est hébergé sur GitHub Pages à l'adresse : **https://rise-4.github.io/Rise-OutlookAddins-Linkedin/**
+L'add-in est hébergé sur GitHub Pages à l'adresse : **https://rise-4.github.io/all--outlook-linkedin--addin/**
 
 Toutes les URLs dans `manifest.xml` pointent vers cette adresse. Pour déployer :
 
 1. Poussez tous les fichiers du projet dans le dépôt GitHub
 2. Activez GitHub Pages dans les paramètres du dépôt (Settings > Pages)
 3. Sélectionnez la branche principale comme source
-4. Les fichiers seront disponibles à l'URL : `https://rise-4.github.io/Rise-OutlookAddins-Linkedin/`
+4. Les fichiers seront disponibles à l'URL : `https://rise-4.github.io/all--outlook-linkedin--addin/`
 
 ### Structure des fichiers sur GitHub Pages
 

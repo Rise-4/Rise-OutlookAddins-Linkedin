@@ -16,11 +16,11 @@
   <ProviderName>Rise4</ProviderName>
   <DefaultLocale>fr-FR</DefaultLocale>
   <!-- The display name of your add-in. Used on the store and various places of the Office UI such as the add-ins dialog. -->
-  <DisplayName DefaultValue="Rise-OutlookAddins-Linkedin" />
+  <DisplayName DefaultValue="LinkedIn Search" />
   <Description DefaultValue="Recherche le profil LinkedIn de l'expéditeur ou du contact."/>
-  <IconUrl DefaultValue="https://rise-4.github.io/Rise-OutlookAddins-Linkedin/assets/icon-64.png" />
-  <HighResolutionIconUrl DefaultValue="https://rise-4.github.io/Rise-OutlookAddins-Linkedin/assets/icon-128.png"/>
-  <SupportUrl DefaultValue="https://rise-4.github.io/Rise-OutlookAddins-Linkedin/index.html" />
+  <IconUrl DefaultValue="https://rise-4.github.io/all--outlook-linkedin--addin/assets/icon-64.png" />
+  <HighResolutionIconUrl DefaultValue="https://rise-4.github.io/all--outlook-linkedin--addin/assets/icon-128.png"/>
+  <SupportUrl DefaultValue="https://rise-4.github.io/all--outlook-linkedin--addin/index.html" />
   <!-- Domains that will be allowed when navigating. For example, if you use ShowTaskpane and then have an href link, navigation will only be allowed if the domain is on this list. -->
   <AppDomains>
     <AppDomain>https://rise-4.github.io</AppDomain>
@@ -40,7 +40,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://rise-4.github.io/Rise-OutlookAddins-Linkedin/index.html"/>
+        <SourceLocation DefaultValue="https://rise-4.github.io/all--outlook-linkedin--addin/index.html"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -143,13 +143,13 @@
 
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://rise-4.github.io/Rise-OutlookAddins-Linkedin/assets/icon-16.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://rise-4.github.io/Rise-OutlookAddins-Linkedin/assets/icon-32.png"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://rise-4.github.io/Rise-OutlookAddins-Linkedin/assets/icon-80.png"/>
+        <bt:Image id="Icon.16x16" DefaultValue="https://rise-4.github.io/all--outlook-linkedin--addin/assets/icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://rise-4.github.io/all--outlook-linkedin--addin/assets/icon-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://rise-4.github.io/all--outlook-linkedin--addin/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="Commands.Url" DefaultValue="https://rise-4.github.io/Rise-OutlookAddins-Linkedin/commands.html" />
-        <bt:Url id="Taskpane.Url" DefaultValue="https://rise-4.github.io/Rise-OutlookAddins-Linkedin/taskpane.html" />
+        <bt:Url id="Commands.Url" DefaultValue="https://rise-4.github.io/all--outlook-linkedin--addin/commands.html" />
+        <bt:Url id="Taskpane.Url" DefaultValue="https://rise-4.github.io/all--outlook-linkedin--addin/taskpane.html" />
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GroupLabel" DefaultValue="Rise LinkedIn"/>

@@ -99,7 +99,7 @@ function searchLinkedIn(event) {
         console.error("Erreur avec la méthode directe:", e);
         // Fallback: Utiliser une page de redirection dans une boîte de dialogue
         try {
-          const redirectUrl = `https://rise-4.github.io/Rise-OutlookAddins-Linkedin/redirect.html?url=${encodeURIComponent(linkedInUrl)}`;
+          const redirectUrl = `https://rise-4.github.io/all--outlook-linkedin--addin/redirect.html?url=${encodeURIComponent(linkedInUrl)}`;
           
           Office.context.ui.displayDialogAsync(
             redirectUrl,
